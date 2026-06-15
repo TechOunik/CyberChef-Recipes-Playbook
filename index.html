@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Cryptographic Playbook | Obioma Felicity Uzoh</title>
+    <style>
+        :root {
+            --bg-dark: #0a0e14;
+            --card-bg: #101520;
+            --border-color: #202b3c;
+            --text-main: #e1e7ef;
+            --text-muted: #8a99ad;
+            --cyber-green: #00ff66;
+            --cyber-blue: #00ccff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--cyber-blue);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .problem-statement {
+            background: rgba(0, 204, 255, 0.05);
+            border-left: 4px solid var(--cyber-blue);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0 1rem 0;
+        }
+
+        /* Profile Section Styling */
+        .analyst-profile {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #111a2e 0%, #101520 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            gap: 1rem;
+        }
+
+        @media(min-width: 768px) {
+            .analyst-profile {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .profile-details h2 {
+            margin: 0 0 0.25rem 0;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            background: rgba(0, 255, 102, 0.1);
+            color: var(--cyber-green);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 102, 0.2);
+            margin-bottom: 0.75rem;
+        }
+
+        .profile-details p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            color: #fff;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media(min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        .playbook-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .playbook-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--cyber-blue);
+        }
+
+        .playbook-card h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1a2333;
+            color: var(--cyber-green);
+            border: 1px solid var(--cyber-green);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--cyber-green);
+            color: var(--bg-dark);
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+        }
+
+        .workflow-timeline {
+            margin-top: 2rem;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-num {
+            background: var(--cyber-blue);
+            color: var(--bg-dark);
+            font-weight: bold;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Standardized Cryptographic Playbook</h1>
+            <div class="subtitle">Defensive Security Engineering & Incident Response Automation</div>
+        </header>
+
+        <div class="problem-statement">
+            <strong>Operational Problem Solved:</strong> Misconfigured encryption implementations and ad-hoc data handling expose organizations to severe data leaks. This playbook provides defensive analysts with pre-built, peer-reviewed, and standardized <strong>CyberChef recipes</strong> to safely handle data at rest, data in transit, and credential processing without manually rebuilding workflows from scratch.
+        </div>
+
+        <div class="analyst-profile">
+            <div class="profile-details">
+                <span class="profile-badge">Lead Analyst</span>
+                <h2>Obioma Felicity Uzoh</h2>
+                <p><strong>Security Operations Center (SOC) Analyst</strong></p>
+                <p style="margin-top: 0.5rem;">Specializing in defensive security operations, incident triage, and blue team automation. This repository serves as a live tactical playbook designed to standardize cryptographic processing workflows within modern security architecture pipelines.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Operational Recipe Directory</h2>
+        <div class="grid">
+            <div class="playbook-card">
+                <h3>1. Malicious Payload Decoding</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">De-obfuscates heavily encoded string patterns found in network traffic logs or malicious scripts during triage.</p>
+                <a href="https://gchq.github.io/CyberChef/#recipe=From_Base64()URL_Decode()" target="_blank" class="btn">Launch Recipe</a>
+            </div>
+
+            <div class="playbook-card">
+                <h3>2. Credential Integrity Hashing</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Standardized SHA-256 and MD5 hash generation for verifying file integrity and checking indicator of compromise (IoC) match lists.</p>
+                <a href="https://gchq.github.io/CyberChef/#recipe=Generate_all_hashes()" target="_blank" class="btn">Launch Recipe</a>
+            </div>
+
+            <div class="playbook-card">
+                <h3>3. Standard AES-256 Storage Encryption</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Implements secure file encryption workflows using verified Key Derivation Functions (KDF) to enforce data confidentiality.</p>
+                <a href="https://gchq.github.io/CyberChef/#recipe=Derive_PBKDF2_Key(%7B'option':'SHA256','string':''%7D,256,10000)AES_Encrypt(%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D,'CBC','Raw','Hex',%7B'option':'Hex','string':''%7D)" target="_blank" class="btn">Launch Recipe</a>
+            </div>
+
+            <div class="playbook-card">
+                <h3>4. Threat Intel Defang Operations</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Safely sanitizes malicious URLs, domains, and IP addresses (e.g., converting HTTP to hxxp) to prevent accidental execution during triage.</p>
+                <a href="https://gchq.github.io/CyberChef/#recipe=Defang_URL(true,true,true,true)" target="_blank" class="btn">Launch Recipe</a>
+            </div>
+
+            <div class="playbook-card">
+                <h3>5. Advanced Log Triage & Extraction</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Automates data parsing to cleanly strip away background noise and isolate clean lists of IPv4/IPv6 addresses from raw firewall logs.</p>
+                <a href="https://gchq.github.io/CyberChef/#recipe=Extract_IP_addresses(false,true,true)" target="_blank" class="btn">Launch Recipe</a>
+            </div>
+        </div>
+
+        <h2 class="section-title">Standard Defensive Architecture Blueprint</h2>
+        <p style="color: var(--text-muted);">When automating data-at-rest protection pipelines, operations must follow this sequential cryptographic chain to remain resilient against dictionary and rainbow table attacks:</p>
+        
+        <div class="workflow-timeline">
+            <div class="workflow-step">
+                <div class="step-num">1</div>
+                <div><strong>Human-Readable Passphrase Input:</strong> Initial secret string entered by user or system configuration.</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">2</div>
+                <div><strong>Salt Allocation & Hashing:</strong> Random data parameters dynamically injected into the pass string to mathematically negate rainbow table lookups.</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">3</div>
+                <div><strong>Key Derivation Function (KDF):</strong> Processing through PBKDF2/Argon2 to establish a cryptographically resilient symmetric binary key.</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">4</div>
+                <div><strong>AES-256 Bit Encryption Pipeline:</strong> Block cipher substitution transformations safely scramble the payload using hardware acceleration (AES-NI).</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">5</div>
+                <div><strong>Secure Ciphertext Extraction:</strong> Production of armored data arrays prepared for secure network transmission or hardened local disk storage.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Tactical Cryptographic Playbook Architecture &bull; Designed by <strong>Obioma Felicity Uzoh</strong></p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Security Operations Center &bull; Blue Team Automation &bull; 2026</p>
+    </footer>
+
+</body>
+</html>
