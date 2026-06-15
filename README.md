@@ -75,5 +75,7 @@ Plaintext
 For protecting data stored on a system, all automation recipes in this repository follow this strict step-by-step cryptographic pipeline:
 
 Plaintext
+
 ```[User Password Input] -> [Add Random Salt] -> [Run PBKDF2/SHA256 Key Tool] -> [Run AES-256-CBC Encryption Engine] -> [Secure Encrypted Ciphertext Output]```
+
 This design ensures that even if an attacker steals the final encrypted data, they cannot break it through brute-force guessing because the mathematical structure and the key setup are too strong.
