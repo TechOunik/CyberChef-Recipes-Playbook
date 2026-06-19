@@ -1,0 +1,4 @@
+[
+  { "op": "Derive PBKDF2 Key", "args": [{"option": "SHA256", "string": ""}, 256, 10000] },
+  { "op": "AES Encrypt", "args": [{"option": "Hex", "string": ""}, {"option": "Hex", "string": ""}, "CBC", "Raw", "Hex", {"option": "Hex", "string": ""}] }
+]
