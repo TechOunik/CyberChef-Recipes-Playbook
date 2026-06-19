@@ -15,7 +15,7 @@ This repository provides a standardized, peer-reviewed collection of CyberChef r
 ---
 
 ## Interactive Playbook Directory
-Click on any operational module below to access its local documentation and pre-configured JSON recipe file. You can run these instantly via the [Interactive Web](https://techounik.github.io/CyberChef-Recipes-Playbook/) Dashboard hosted on GitHub Pages.
+Click on any operational module below to access its local documentation and pre-configured JSON recipe file. You can run these instantly via the **[Interactive Web](https://techounik.github.io/CyberChef-Recipes-Playbook/)** Dashboard hosted on GitHub Pages.
 
 ### 📂 [Decoding](Decoding/)
 * **What it does:** Unpacks strings or scripts that attackers obfuscate to bypass network security filters.
