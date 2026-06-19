@@ -76,7 +76,7 @@ The playbook is organized into separate folders based on specific security tasks
 - **Purpose:** Sets up strong data confidentiality rules to protect sensitive forensic evidence or local databases stored on a disk.
 - **Recipe Focus:** Uses standard AES-256 encryption in CBC mode, powered by a password-based PBKDF2 key derivation system with an added salt to stop password-cracking tools.
 
-### 4. Threat Intel Defanging (/Threat Intel Defanging)
+### [Threat Intel Folder](Threat%20Intel%20Defanging/)
 - **Purpose:** Sanitizes live malicious links and indicators before they are added to documentation, reports, or communications.
 - **Recipe Focus:** Automatically breaks active links by changing text like http to hxxp and placing brackets around IP addresses, such as converting 192.168.1.1 to 192[.]168[.]1[.]1.
 
