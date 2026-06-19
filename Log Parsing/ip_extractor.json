@@ -1,0 +1,4 @@
+[
+  { "op": "Extract IP addresses", "args": [false, true, true, false] },
+  { "op": "Unique", "args": ["Line feed"] }
+]
