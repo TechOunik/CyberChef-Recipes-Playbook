@@ -1,0 +1,4 @@
+[
+  { "op": "Defang URL", "args": [true, true, true, true] },
+  { "op": "Defang IP Arrays", "args": [true] }
+]
