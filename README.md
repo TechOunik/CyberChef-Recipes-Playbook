@@ -8,7 +8,7 @@ Defensive Security Operations and Incident Response Automation
 ---
 
 ## The Problem
-During incident triage, analysts regularly encounter hidden payloads, raw log files, and live malicious indicators. Processing these under pressure using unverified, ad-hoc web tools introduces severe operational risks—including accidental malware execution, alert pollution, and insecure data handling.
+During incident triage, analysts regularly encounter hidden payloads, raw log files, and live malicious indicators. Processing these under pressure using unverified, ad-hoc web tools introduces severe operational risks, including accidental malware execution, alert pollution, and insecure data handling.
 
 This repository provides a standardized, peer-reviewed collection of CyberChef recipes paired with an interactive frontend dashboard to instantly load optimized, production-grade workflows for everyday incident response and data protection.
 
