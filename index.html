@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOC Cryptographic Playbook | Obioma Felicity Uzoh</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <link class="favicon-icon" rel="icon" type="image/png" href="logo.png">
     <style>
-        :root {
-            --bg-dark: #0f1219;           
+       :root {
+            /* Matte Slate-Charcoal */
+            --bg-dark: #030712;           
             --card-bg: #161b26;           
-            --border-color: #242b3d;      
-            --text-main: #f1f5f9;         
-            --text-muted: #94a3b8;        
+            --border-color: #0077c2;      
+            --text-main: #e1e7ef;         
+            --text-muted: #8a99ad;        
             --club-blue: #00b0ff; 
-            --club-hover: #0077c2;
-            --nav-bg: rgba(22, 27, 38, 0.95); 
-        }
-
+            --club-hover: #0077c2; 
+            --nav-bg: #111622; 
+            }
+    
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
@@ -27,6 +28,7 @@
             padding-top: 70px; 
         }
 
+        /* Responsive Navbar Layout */
         .navbar {
             position: fixed;
             top: 0;
@@ -34,7 +36,6 @@
             right: 0;
             height: 65px;
             background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             display: flex;
@@ -59,6 +60,7 @@
             border: 1px solid var(--club-blue);
         }
 
+        /* Hamburger button layout */
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -89,7 +91,7 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* Sliding Navigation Drawer Menu */
+        /* Default Sliding Drawer Layout */
         .nav-menu {
             position: fixed;
             top: 65px;
@@ -131,7 +133,38 @@
             background-color: rgba(22, 27, 38, 0.4);
         }
 
-        /* Layout Container */
+        /* Desktop Layout Rule: Fixes missing visibility on larger screens */
+        @media(min-width: 992px) {
+            .hamburger {
+                display: none; /* Hide hamburger icon on laptop screens */
+            }
+
+            .nav-menu {
+                position: static; /* Place it back inline inside the top bar */
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                border-left: none;
+                flex-direction: row; /* Layout links left-to-right */
+                padding: 0;
+            }
+
+            .nav-menu li {
+                width: auto;
+            }
+
+            .nav-link {
+                padding: 0 1rem;
+                border-bottom: none;
+                font-size: 0.9rem;
+            }
+            
+            .nav-link:hover {
+                background-color: transparent;
+            }
+        }
+
+        /* Main Content Layout Container */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -316,11 +349,11 @@
         </button>
 
         <ul class="nav-menu" id="nav-menu-links">
-            <li><a href="#" class="nav-link" onclick="toggleMenu()">Dashboard</a></li>
-            <li><a href="https://techounik1.gitlab.io/obioma" target="_blank" class="nav-link">Portfolio</a></li>
-            <li><a href="https://selar.com/theclubcyberblueprint" target="_blank" class="nav-link">The Club Cyber Blueprint</a></li>
-            <li><a href="https://www.linkedin.com/in/felicityuzoh" target="_blank" class="nav-link">LinkedIn</a></li>
-            <li><a href="https://github.com/techounik/CyberChef-Recipes-Playbook" target="_blank" class="nav-link">Repository</a></li>
+            <li><a href="#" class="nav-link" onclick="closeMenu()">Dashboard</a></li>
+            <li><a href="https://techounik1.gitlab.io/obioma" target="_blank" class="nav-link" onclick="closeMenu()">Portfolio</a></li>
+            <li><a href="https://selar.com/theclubcyberblueprint" target="_blank" class="nav-link" onclick="closeMenu()">The Club Cyber Blueprint</a></li>
+            <li><a href="https://www.linkedin.com/in/felicityuzoh" target="_blank" class="nav-link" onclick="closeMenu()">LinkedIn</a></li>
+            <li><a href="https://github.com/techounik/CyberChef-Recipes-Playbook" target="_blank" class="nav-link" onclick="closeMenu()">Repository</a></li>
         </ul>
     </nav>
 
@@ -336,7 +369,7 @@
 
         <div class="analyst-profile">
             <div class="profile-details">
-                <span class="profile-badge">Lead Analyst</span>
+                <span class="profile-badge">SOC Analyst</span>
                 <h2>Obioma Felicity Uzoh</h2>
                 <p><strong>Security Operations Center (SOC) Analyst</strong></p>
                 <p style="margin-top: 0.5rem;">Specializing in defensive security operations, incident triage, and blue team automation. This repository serves as a live tactical playbook designed to standardize cryptographic processing workflows within modern security architecture pipelines.</p>
@@ -412,11 +445,14 @@
         const hamburger = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu-links');
 
-        hamburger.addEventListener('click', toggleMenu);
-
-        function toggleMenu() {
+        hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
         }
     </script>
 
